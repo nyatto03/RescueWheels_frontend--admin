@@ -1,0 +1,84 @@
+{
+  "providers": [
+    {
+      "id": 1,
+      "name": "Provider A",
+      "location": "Location A",
+      "services": [
+        {
+          "service_name": "service name 1",
+          "vehicle_of_service": "Car 1",
+          "procedure": "step 1, step2",
+          "cost": "1000"
+        },
+        {
+          "service_name": "service name 2",
+          "vehicle_of_service": "Car 2",
+          "procedure": "step 1, step2",
+          "cost": "2000"
+        }
+      ],
+      "vehicle": [
+        "Car 1",
+        "Car 2"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Provider B",
+      "location": "Location B",
+      "services": [
+        {
+          "service_name": "service name 3",
+          "vehicle_of_service": "Car 3",
+          "procedure": "step 1, step2",
+          "cost": "1500"
+        },
+        {
+          "service_name": "service name 4",
+          "vehicle_of_service": "Car 4",
+          "procedure": "step 1, step2",
+          "cost": "2050"
+        }
+      ],
+      "vehicle": [
+        "Car 3",
+        "Car 4"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "User A",
+      "date_of_birth": "04/11/2003",
+      "email": "userA@gmail.com",
+      "phone": "0359066479",
+      "location": "Hà Nội",
+      "signup_date": "05/05/2024"
+    },
+    {
+      "id": "2",
+      "name": "User B",
+      "date_of_birth": "05/11/2003",
+      "email": "userB@gmail.com",
+      "phone": "0359066489",
+      "location": "Hồ Chí Minh",
+      "signup_date": "05/05/2024"
+    }
+  ],
+  "reports": [
+    {
+      "id": "1",
+      "userName": "User B",
+      "content": "Report content 2",
+      "status": "Accepted"
+    },
+    {
+      "id": "2",
+      "userName": "User B",
+      "content": "Report content 2",
+      "status": "Accepted"
+    }
+  ]
+}

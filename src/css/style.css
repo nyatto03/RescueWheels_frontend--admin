@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #575757;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Trong file CSS của bạn */
+
+
+/* Thiết lập bảng chiếm 100% chiều rộng */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Loại bỏ khoảng cách giữa các ô */
+}
+
+
+/* Thiết lập chiều rộng cân đối cho các trường dữ liệu trong bảng */
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    /* Khoảng cách giữa nội dung và mép của các ô */
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #f2f2f2;
+    /* Màu nền cho tiêu đề cột */
+    border-bottom: 1px solid #ddd;
+    /* Đường kẻ ngang giữa các hàng */
+}
+
+.data-table td {
+    border-bottom: 1px solid #ddd;
+    /* Đường kẻ ngang giữa các hàng */
+}
+
+
+/* Xóa đường kẻ ngang ở hàng cuối cùng của bảng */
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.success-modal {
+    display: block;
+}
+
+.modal .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
