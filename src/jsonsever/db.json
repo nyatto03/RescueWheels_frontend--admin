@@ -45,6 +45,52 @@
         "Car 3",
         "Car 4"
       ]
+    },
+    {
+      "id": 3,
+      "name": "Provider C",
+      "location": "Location C",
+      "services": [
+        {
+          "service_name": "service name 5",
+          "vehicle_of_service": "Car 5",
+          "procedure": "step 1, step2",
+          "cost": "1500"
+        },
+        {
+          "service_name": "service name 6",
+          "vehicle_of_service": "Car 6",
+          "procedure": "step 1, step2",
+          "cost": "2059"
+        }
+      ],
+      "vehicle": [
+        "Car 5",
+        "Car 6"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Provider A",
+      "location": "Location A",
+      "services": [
+        {
+          "service_name": "service name 1",
+          "vehicle_of_service": "Car 1",
+          "procedure": "step 1, step2",
+          "cost": "1000"
+        },
+        {
+          "service_name": "service name 2",
+          "vehicle_of_service": "Car 2",
+          "procedure": "step 1, step2",
+          "cost": "2000"
+        }
+      ],
+      "vehicle": [
+        "Car 1",
+        "Car 2"
+      ]
     }
   ],
   "users": [
@@ -65,6 +111,24 @@
       "phone": "0359066489",
       "location": "Hồ Chí Minh",
       "signup_date": "05/05/2024"
+    },
+    {
+      "id": "3",
+      "name": "User A",
+      "date_of_birth": "04/11/2003",
+      "email": "userA@gmail.com",
+      "phone": "0359066479",
+      "location": "Hà Nội",
+      "signup_date": "05/05/2024"
+    },
+    {
+      "id": "4",
+      "name": "User A",
+      "date_of_birth": "04/11/2003",
+      "email": "userA@gmail.com",
+      "phone": "0359066479",
+      "location": "Hà Nội",
+      "signup_date": "05/05/2024"
     }
   ],
   "reports": [
@@ -72,13 +136,25 @@
       "id": "1",
       "userName": "User B",
       "content": "Report content 2",
-      "status": "Accepted"
+      "status": "Declined"
     },
     {
       "id": "2",
       "userName": "User B",
       "content": "Report content 2",
       "status": "Accepted"
+    },
+    {
+      "id": "3",
+      "userName": "User B",
+      "content": "Report content 2",
+      "status": "Declined"
+    },
+    {
+      "id": "4",
+      "userName": "User B",
+      "content": "Report content 2",
+      "status": "Declined"
     }
   ]
 }

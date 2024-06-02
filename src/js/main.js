@@ -63,6 +63,7 @@ function viewProvider(providerId) {
                 `).join('')}
             </ul>
             <button onclick="hideProviderDetails()">Close</button>
+            <button onclick="deleteProvider(${provider.id})">Delete</button>
         `;
       providerDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
@@ -115,6 +116,7 @@ function viewUserDetails(userId) {
             <p>Location: ${user.location}</p>
             <p>Sign up date: ${user.signup_date}</p>
             <button onclick="hideUserDetails()">Close</button>
+            <button onclick="deleteUser(${user.id})">Delete</button>
         `;
       userDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
@@ -165,6 +167,7 @@ function viewReport(reportId) {
             <button onclick="acceptReport(${report.id})">Accept</button>
             <button onclick="declineReport(${report.id})">Decline</button>
             <button onclick="hideReportDetails()">Close</button>
+            <button onclick="deleteReport(${report.id})">Delete</button>
         `;
       reportDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
@@ -196,7 +199,7 @@ function acceptReport(reportId) {
       }
       document.querySelector(`#report-${reportId} .report-status`).textContent = 'Accepted';
       hideReportDetails();
-      showSuccessModal(); // Hiển thị thông báo thành công
+      showupdateStatusReportshowSuccessModal(); // Hiển thị thông báo thành công
     })
     .catch(error => console.error('Error accepting report:', error));
 }
@@ -215,12 +218,12 @@ function declineReport(reportId) {
       }
       document.querySelector(`#report-${reportId} .report-status`).textContent = 'Declined';
       hideReportDetails();
-      showSuccessModal(); // Hiển thị thông báo thành công
+      showupdateStatusReportshowSuccessModal(); // Hiển thị thông báo thành công
     })
     .catch(error => console.error('Error declining report:', error));
 }
 
-function showSuccessModal() {
+function showupdateStatusReportshowSuccessModal() {
   document.querySelector('.modal-update-repost').classList.add('success-modal');
 
   setTimeout(() => {
@@ -244,14 +247,14 @@ function hideReportDetails() {
 }
 
 // Thêm sự kiện cho nút tìm kiếm
-document.getElementById('searchProviderButton').addEventListener('click', function() {
+document.getElementById('searchProviderButton').addEventListener('click', function () {
   searchProviders();
 });
 
 // Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm
-document.getElementById('searchProviderInput').addEventListener('keypress', function(event) {
+document.getElementById('searchProviderInput').addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
-      searchProviders();
+    searchProviders();
   }
 });
 
@@ -261,28 +264,28 @@ function searchProviders() {
   const rows = document.getElementById('providers-table').querySelectorAll('tbody tr');
 
   rows.forEach(row => {
-      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
-      const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-      const location = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+    const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    const location = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
 
-      if (id.includes(searchText) || name.includes(searchText) || location.includes(searchText)) {
-          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
-      } else {
-          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
-      }
+    if (id.includes(searchText) || name.includes(searchText) || location.includes(searchText)) {
+      row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+    } else {
+      row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+    }
   });
 }
 
 
 // Thêm sự kiện cho nút tìm kiếm
-document.getElementById('searchUserButton').addEventListener('click', function() {
+document.getElementById('searchUserButton').addEventListener('click', function () {
   searchUsers();
 });
 
 // Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm
-document.getElementById('searchUserInput').addEventListener('keypress', function(event) {
+document.getElementById('searchUserInput').addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
-      searchUsers();
+    searchUsers();
   }
 });
 
@@ -292,27 +295,27 @@ function searchUsers() {
   const rows = document.getElementById('users-table').querySelectorAll('tbody tr');
 
   rows.forEach(row => {
-      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
-      const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-      const email = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+    const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    const email = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
 
-      if (id.includes(searchText) || name.includes(searchText) || email.includes(searchText)) {
-          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
-      } else {
-          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
-      }
+    if (id.includes(searchText) || name.includes(searchText) || email.includes(searchText)) {
+      row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+    } else {
+      row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+    }
   });
 }
 
 // Thêm sự kiện cho nút tìm kiếm repost
-document.getElementById('searchReportButton').addEventListener('click', function() {
+document.getElementById('searchReportButton').addEventListener('click', function () {
   searchReports();
 });
 
 // Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm repost
-document.getElementById('searchReportInput').addEventListener('keypress', function(event) {
+document.getElementById('searchReportInput').addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
-      searchReports();
+    searchReports();
   }
 });
 
@@ -322,14 +325,109 @@ function searchReports() {
   const rows = document.getElementById('reports-table').querySelectorAll('tbody tr');
 
   rows.forEach(row => {
-      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
-      const userName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-      const status = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+    const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+    const userName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    const status = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
 
-      if (id.includes(searchText) || userName.includes(searchText) || status.includes(searchText)) {
-          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
-      } else {
-          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
-      }
+    if (id.includes(searchText) || userName.includes(searchText) || status.includes(searchText)) {
+      row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+    } else {
+      row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+    }
   });
 }
+
+
+//delete
+
+function deleteProvider(providerId) {
+  fetch(`${apiUrl.providers}/${providerId}`, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete provider');
+      }
+      // Xóa hàng khỏi bảng sau khi xóa thành công
+      hideProviderDetails();
+      loadProviders();
+      showdeleteProvidershowSuccessModal(); // Hiển thị thông báo thành công
+      // Sau khi xóa thành công, tải lại danh sách nhà cung cấp
+    })
+    .catch(error => console.error('Error deleting provider:', error));
+}
+
+
+function showdeleteProvidershowSuccessModal() {
+  document.querySelector('.modal-delete-provider').classList.add('success-modal');
+
+  setTimeout(() => {
+    document.querySelector('.modal-delete-provider').classList.remove('success-modal');
+  }, 2000); // Ẩn modal sau 2 giây
+}
+
+// Đóng modal khi nhấp vào nút đóng
+document.querySelector('.close').addEventListener('click', function () {
+  document.querySelector('.modal-delete-provider').classList.remove('success-modal');
+});
+
+// Hàm xóa người dùng
+function deleteUser(userId) {
+  fetch(`${apiUrl.users}/${userId}`, {
+      method: 'DELETE'
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Failed to delete user');
+      }
+
+      hideUserDetails();
+      loadUsers();
+      showDeleteUserSuccessModal();
+  })
+  .catch(error => console.error('Error deleting user:', error));
+}
+
+// Hàm hiển thị modal thông báo xóa người dùng thành công
+function showDeleteUserSuccessModal() {
+  document.querySelector('.modal-delete-user').classList.add('success-modal');
+
+  setTimeout(() => {
+      document.querySelector('.modal-delete-user').classList.remove('success-modal');
+  }, 2000); // Ẩn modal sau 2 giây
+}
+
+// Đóng modal khi nhấp vào nút đóng
+document.querySelector('.modal-delete-user .close').addEventListener('click', function () {
+  document.querySelector('.modal-delete-user').classList.remove('success-modal');
+});
+
+// Hàm xóa báo cáo
+function deleteReport(reportId) {
+  fetch(`${apiUrl.reports}/${reportId}`, {
+      method: 'DELETE'
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Failed to delete report');
+      }
+      hideReportDetails();
+      loadReports();
+      showDeleteReportSuccessModal();
+  })
+  .catch(error => console.error('Error deleting report:', error));
+}
+
+// Hàm hiển thị modal thông báo xóa báo cáo thành công
+function showDeleteReportSuccessModal() {
+  document.querySelector('.modal-delete-report').classList.add('success-modal');
+
+  setTimeout(() => {
+      document.querySelector('.modal-delete-report').classList.remove('success-modal');
+  }, 2000); // Ẩn modal sau 2 giây
+}
+
+// Đóng modal khi nhấp vào nút đóng
+document.querySelector('.modal-delete-report .close').addEventListener('click', function () {
+  document.querySelector('.modal-delete-report').classList.remove('success-modal');
+});
