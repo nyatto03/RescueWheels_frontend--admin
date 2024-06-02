@@ -2,4 +2,4 @@
 use mock api
 
 cd -> jsonsever
-npm start
+run: npm start
