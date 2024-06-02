@@ -67,6 +67,8 @@ function viewProvider(providerId) {
       providerDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
       document.getElementById('providers-table').classList.add('hidden');
+
+      document.getElementById('searchProviderContainer').style.display = 'none';
     })
     .catch(error => console.error('Error loading provider details:', error));
 }
@@ -76,6 +78,8 @@ function hideProviderDetails() {
 
   // Hiển thị lại bảng danh sách
   document.getElementById('providers-table').classList.remove('hidden');
+
+  document.getElementById('searchProviderContainer').style.display = '';
 }
 
 function loadUsers() {
@@ -115,6 +119,9 @@ function viewUserDetails(userId) {
       userDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
       document.getElementById('users-table').classList.add('hidden');
+
+      document.getElementById('searchUserContainer').style.display = 'none';
+
     })
     .catch(error => console.error('Error loading user details:', error));
 }
@@ -124,6 +131,8 @@ function hideUserDetails() {
 
   // Hiển thị lại bảng danh sách
   document.getElementById('users-table').classList.remove('hidden');
+
+  document.getElementById('searchUserContainer').style.display = '';
 }
 
 function loadReports() {
@@ -160,6 +169,8 @@ function viewReport(reportId) {
       reportDetails.classList.remove('hidden');
       // Ẩn bảng danh sách
       document.getElementById('reports-table').classList.add('hidden');
+
+      document.getElementById('searchReportContainer').style.display = 'none';
     })
     .catch(error => console.error('Error loading report details:', error));
 }
@@ -228,4 +239,97 @@ function hideReportDetails() {
   // Hiển thị lại bảng danh sách
   document.getElementById('reports-table').classList.remove('hidden');
 
+  document.getElementById('searchReportContainer').style.display = '';
+
+}
+
+// Thêm sự kiện cho nút tìm kiếm
+document.getElementById('searchProviderButton').addEventListener('click', function() {
+  searchProviders();
+});
+
+// Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm
+document.getElementById('searchProviderInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+      searchProviders();
+  }
+});
+
+// Hàm tìm kiếm nhà cung cấp
+function searchProviders() {
+  const searchText = document.getElementById('searchProviderInput').value.toLowerCase();
+  const rows = document.getElementById('providers-table').querySelectorAll('tbody tr');
+
+  rows.forEach(row => {
+      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+      const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+      const location = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+
+      if (id.includes(searchText) || name.includes(searchText) || location.includes(searchText)) {
+          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+      } else {
+          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+      }
+  });
+}
+
+
+// Thêm sự kiện cho nút tìm kiếm
+document.getElementById('searchUserButton').addEventListener('click', function() {
+  searchUsers();
+});
+
+// Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm
+document.getElementById('searchUserInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+      searchUsers();
+  }
+});
+
+// Hàm tìm kiếm người dùng
+function searchUsers() {
+  const searchText = document.getElementById('searchUserInput').value.toLowerCase();
+  const rows = document.getElementById('users-table').querySelectorAll('tbody tr');
+
+  rows.forEach(row => {
+      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+      const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+      const email = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+
+      if (id.includes(searchText) || name.includes(searchText) || email.includes(searchText)) {
+          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+      } else {
+          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+      }
+  });
+}
+
+// Thêm sự kiện cho nút tìm kiếm repost
+document.getElementById('searchReportButton').addEventListener('click', function() {
+  searchReports();
+});
+
+// Thêm sự kiện khi ấn phím Enter trong trường tìm kiếm repost
+document.getElementById('searchReportInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+      searchReports();
+  }
+});
+
+// Function to search reports
+function searchReports() {
+  const searchText = document.getElementById('searchReportInput').value.toLowerCase();
+  const rows = document.getElementById('reports-table').querySelectorAll('tbody tr');
+
+  rows.forEach(row => {
+      const id = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+      const userName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+      const status = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+      if (id.includes(searchText) || userName.includes(searchText) || status.includes(searchText)) {
+          row.style.display = ''; // Hiển thị hàng nếu chứa từ khóa tìm kiếm
+      } else {
+          row.style.display = 'none'; // Ẩn hàng nếu không chứa từ khóa tìm kiếm
+      }
+  });
 }
